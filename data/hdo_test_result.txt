@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="cs" data-vivo-locale="cs">
+	<head>
+
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+		<meta name="Distribution" content="global"/>
+		<meta name="Expires" content="never"/>
+		<meta name="Revisit-after" content="7 Days"/>
+		<meta name="Resource-type" content="document"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="author" content="Pražská energetika, a. s."/>
+		<meta name="keywords" content="PRE, Pražská energetika, energie, elektřina, plyn, dodavatel"/>
+		<meta name="description" content="PRE je tradičním a spolehlivým dodavatelem elektrické energie na území celé České republiky."/>
+		<base href="https://www.pre.cz/"/>
+		<title>HDO | PRE</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="/modules/vivo/css/package.php?package=067c7967e6c95b254e7873b01289a055"/>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" media="screen"/>
+		<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+		<!--[if IE 8]>
+			<link rel="stylesheet" href="/css/front-ie8.css" type="text/css" media="screen, projection"/>
+		<![endif]-->
+		<script src="/modules/vivo/js/package.php?package=af14292c3836b7343d828a8ec9934e46" type="text/javascript" ></script>
+		<!--[if lt IE 9]>
+			<script src="/js/html5shiv.js"></script>
+		<![endif]-->
+
+	</head>
+	<body class="front">
+
+	<script type="text/javascript">
+		$.requireJS('/js/clientPortal/Components/Hdo.js', true);
+		var ___defaultHdo = null;
+		___defaultHdo = '490';
+	</script>
+
+	<div class="inner-box">
+		<h3 class="hdo">
+			Časy spínání (<span class='info-hdo-amm' title='Hromadné dálkové ovládání'>HDO</span> nebo <span class='info-hdo-amm' title='Chytré měření (Automated Meter Management)'>AMM</span>)
+					</h3>
+	</div>
+
+		<form>
+			<div class="t-row">
+					<div class="t-cell gray">
+						<input id="hdoInstruction490" class="__radio hdoInstruction" type="radio" value="490" name="hdoInstruction" checked="checked">
+						<label for="hdoInstruction490" style="cursor: pointer;">490 - odblokování NT a spotřebiče</label>
+					</div>
+					<div class="t-cell gray">
+						<input id="hdoInstruction491" class="__radio hdoInstruction" type="radio" value="491" name="hdoInstruction">
+						<label for="hdoInstruction491" style="cursor: pointer;">491 - odblokování NT a spotřebiče</label>
+					</div>
+			</div>
+			<div class="clear"></div>
+		</form>
+
+	<ul class="button-tab hdo-tabs">
+		<li class="active" data-tab="component-hdo-dnes" id="component-tab-hdo-dnes"><a href="#">Dnes</a></li>
+		<li data-tab="component-hdo-zitra" id="component-tab-hdo-zitra"><a href="#">Zítra</a></li>
+		<li data-tab="component-hdo-vice-dni" id="component-hdo-tab-vice-dni"><a href="#">Více dní</a></li>
+		<li data-tab="konkretni-datum" id="tab-konkretni-datum"><a href="#">Konkrétní datum</a></li>
+	</ul>
+	<img class="print-hdo hide" src="/images/highcharts/print.png" alt="">
+	<div class="clear"></div>
+
+
+	<div class="inner-box box" id="hdo-sections">
+
+		<div class="sections">
+
+						<div id="component-hdo-dnes">
+
+	<div class="hdo-bar">
+		<div class="blue-text pull-left">pondělí 01.05.</div>
+		<div class="overflow-bar"></div>
+			<span style="left: 0px;" class="hdovt"></span>
+			<span style="left: 0px;" class="span-overflow" title="00:00 - 03:00"></span>
+				<span id="time-is-15:52" style="left: 430px;" class="span-actualTime"></span>
+			<span style="left: 81px;" class="hdont"></span>
+			<span style="left: 81px;" class="span-overflow" title="03:00 - 08:00"></span>
+				<span id="time-is-15:52" style="left: 430px;" class="span-actualTime"></span>
+			<span style="left: 217px;" class="hdovt"></span>
+			<span style="left: 217px;" class="span-overflow" title="08:00 - 14:00"></span>
+				<span id="time-is-15:52" style="left: 430px;" class="span-actualTime"></span>
+			<span style="left: 379px;" class="hdont"></span>
+			<span style="left: 379px;" class="span-overflow" title="14:00 - 17:00"></span>
+				<span id="time-is-15:52" style="left: 430px;" class="span-actualTime"></span>
+			<span style="left: 460px;" class="hdovt"></span>
+			<span style="left: 460px;" class="span-overflow" title="17:00 - 00:00"></span>
+				<span id="time-is-15:52" style="left: 430px;" class="span-actualTime"></span>
+	</div>
+		<div class="status pull-left">
+			Celkem doba nízkého tarifu:
+			8 h
+		</div>
+
+		<div class="status pull-right">
+			<span class="wrapper light-blue"></span> Vysoký tarif
+		</div>
+		<div class="status pull-right">
+			<span class="wrapper dark-blue"></span> Nízký tarif
+		</div>
+		<div class="clear"></div>
+			</div>
+
+			<div id="component-hdo-zitra" class="hide">
+
+	<div class="hdo-bar">
+		<div class="blue-text pull-left">úterý 02.05.</div>
+		<div class="overflow-bar"></div>
+			<span style="left: 0px;" class="hdovt"></span>
+			<span style="left: 0px;" class="span-overflow" title="00:00 - 01:00"></span>
+			<span style="left: 27px;" class="hdont"></span>
+			<span style="left: 27px;" class="span-overflow" title="01:00 - 06:00"></span>
+			<span style="left: 163px;" class="hdovt"></span>
+			<span style="left: 163px;" class="span-overflow" title="06:00 - 13:40"></span>
+			<span style="left: 370px;" class="hdont"></span>
+			<span style="left: 370px;" class="span-overflow" title="13:40 - 16:40"></span>
+			<span style="left: 451px;" class="hdovt"></span>
+			<span style="left: 451px;" class="span-overflow" title="16:40 - 00:00"></span>
+	</div>
+		<div class="status pull-left">
+			Celkem doba nízkého tarifu:
+			8 h
+		</div>
+
+		<div class="status pull-right">
+			<span class="wrapper light-blue"></span> Vysoký tarif
+		</div>
+		<div class="status pull-right">
+			<span class="wrapper dark-blue"></span> Nízký tarif
+		</div>
+		<div class="clear"></div>
+			</div>
+
+			<div id="konkretni-datum" class="hide">
+
+				<div class="setDate">
+					<form id="component-hdo-form-hdoKonkretniDatum" name="componentHdoFormHdoKonkretniDatum" action="" method="post">
+						<input type="text" value="" class="sendData myDateValid v_date small" id="send-date" name="send_date" placeholder="Zadejte datum">
+							<input type="hidden" value="490" class="sendData" id="first-hdo" name="first_hdo">
+						<a href="#" id="component-hdo-send-form-hdoKonkretniDatum" class="formClick button small">Zobrazit</a>
+					</form>
+					<div class="clear"></div>
+				</div>
+
+				<div id="component-hdo-output-hdoKonkretniDatum" class="hdo-bar"></div>
+			</div>
+			<div id="component-hdo-vice-dni" class="hide"></div>
+		</div>
+
+					</div>
+
+	<div class="clear"></div>
+
+	<div id="print-hdo" class="hide"></div>
+
+	</body>
+</html>
