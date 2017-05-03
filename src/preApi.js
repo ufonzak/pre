@@ -22,10 +22,9 @@ module.exports = function(console, https, querystring, _, hdoPageParser) {
       }, { bodyData, expectedResponse: 302 });
 
       this._session = response.headers['set-cookie'].join(';');
-      console.log(`Session ${this._session}`);
     }
 
-    async loadTodaysHDO() {
+    async getTodaysHDO() {
       let { response, data } = await this._request({
         path: '/Components/moje-pre/prehled-uctu/vase-odberne-misto/hdo/',
         headers: {

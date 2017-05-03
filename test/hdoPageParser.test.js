@@ -17,7 +17,7 @@ describe('hdoPageParser', () => {
   it('parses test data', async () => {
     let { hdoPageParser, fs, Q } = loaded;
 
-    let testData = await Q.nfcall(fs.readFile, './test_data.txt', 'utf-8');
+    let testData = await Q.nfcall(fs.readFile, './data/hdo_test_result.txt', 'utf-8');
 
     let parsed = await hdoPageParser(testData);
 
