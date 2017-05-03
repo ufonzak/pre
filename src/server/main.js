@@ -1,5 +1,3 @@
-
-
 module.exports = function inj(console, utils, preApi) {
   async function main() {
     console.log('start');
