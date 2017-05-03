@@ -2,7 +2,7 @@ module.exports = function inj(express, expressPromise, preApi, settingsDao) {
   const router = express.Router();
 
   router.get('/today', expressPromise(async (req, res) => {
-    const preSetting = await settingsDao.getPreSettings();
+    const preSetting = await settingsDao.getSettings(settingsDao.constants.PRE);
     let client;
     try {
       client = preApi.createClient(preSetting);

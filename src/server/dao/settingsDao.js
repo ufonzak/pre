@@ -1,6 +1,7 @@
 const SETTINGS_COLLECTION = 'settings';
-const PRE_SETTING = 'pre';
-
+const constants = {
+  PRE: 'pre',
+};
 
 module.exports = function inj(mongoClient, Promise) {
   async function getCollection(callback) {
@@ -11,18 +12,18 @@ module.exports = function inj(mongoClient, Promise) {
     });
   }
 
-  function getPreSettings() {
+  function getSettings(settingsKey) {
     return getCollection(async (collection) => {
-      const result = await collection.findOneAsync({ settings: PRE_SETTING });
+      const result = await collection.findOneAsync({ settings: settingsKey });
       return result ? result.data : {};
     });
   }
 
-  async function savePreSettings(settings) {
+  async function saveSettings(settingsKey, settings) {
     return getCollection(async (collection) => {
-      await collection.findOneAndReplaceAsync({ settings: PRE_SETTING }, { settings: PRE_SETTING, data: settings }, { upsert: true });
+      await collection.findOneAndReplaceAsync({ settings: settingsKey }, { settings: settingsKey, data: settings }, { upsert: true });
     });
   }
 
-  return { getPreSettings, savePreSettings };
+  return { getSettings, saveSettings, constants };
 };

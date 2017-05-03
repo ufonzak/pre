@@ -21,9 +21,9 @@ describe('settingsDao', () => {
     const { settingsDao } = loaded;
     const testSettings = { name: 'xxx1' };
 
-    await settingsDao.savePreSettings(testSettings);
+    await settingsDao.saveSettings('testKey', testSettings);
 
-    const retrievedSetting = await settingsDao.getPreSettings();
+    const retrievedSetting = await settingsDao.getSettings('testKey');
     expect(retrievedSetting).toEqual(testSettings);
   });
 
