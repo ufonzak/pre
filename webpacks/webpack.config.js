@@ -9,6 +9,9 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: './src/client/index.jsx',
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
   output: {
     path: path.resolve('dist'),
     filename: 'index_bundle.js',

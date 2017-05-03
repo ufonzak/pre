@@ -1,10 +1,8 @@
 import React from 'react';
+import Greeting from './Greeting';
 
 export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <h1>Hello World</h1>
-      </div>);
+    return (<Greeting />);
   }
 }
