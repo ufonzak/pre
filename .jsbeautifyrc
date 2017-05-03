@@ -29,5 +29,8 @@
     "indent_char": " ",
     "indent_level": 0,
     "indent_with_tabs": false
+  },
+  "jsx": {
+    "brace_style": "collapse-preserve-inline"
   }
 }
