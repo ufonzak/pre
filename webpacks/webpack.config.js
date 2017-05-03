@@ -8,7 +8,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-  entry: './src/client/index.jsx',
+  entry: ['babel-polyfill', './src/client/index.jsx'],
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
   },
@@ -25,4 +25,9 @@ module.exports = {
   plugins: [
     HtmlWebpackPluginConfig,
   ],
+  devServer: {
+    proxy: {
+      '*': 'http://localhost:5000',
+    },
+  },
 };

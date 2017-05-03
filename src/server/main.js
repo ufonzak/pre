@@ -1,17 +1,19 @@
-module.exports = function inj(console, utils, preApi) {
-  async function main() {
+
+module.exports = function inj(console, server, Q) {
+  return async () => {
+    const runPromise = Q.defer();
+
+    process.on('SIGTERM', () => runPromise.resolve());
+    process.on('SIGINT', () => runPromise.resolve());
+
     console.log('start');
-    await utils.delay();
 
-    const client = preApi.createClient({ loginName: 'martinzak73@gmail.com', passsword: 'qwerty' });
+    await server.start();
 
-    await client.login();
-    const plan = await client.getTodaysHDO();
-    console.log(plan);
-    await client.logout();
+    await runPromise.promise;
+
+    server.stop();
 
     console.log('end');
-  }
-
-  return main;
+  };
 };

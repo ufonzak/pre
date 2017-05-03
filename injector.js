@@ -34,6 +34,12 @@ module.exports = () => {
     jQuery: getjQuery,
     console,
     nodeProcess: process,
+    bodyParser: require('body-parser'),
+    compression: require('compression'),
+    express: require('express'),
+    http: require('http'),
+    morgan: require('morgan'),
+    cors: require('cors'),
   });
   /* eslint-enable global-require */
 
