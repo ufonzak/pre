@@ -1,14 +1,12 @@
 
-const injector = require("./injector");
+const injector = require('./injector');
 
-/*setTimeout(function () {
-  console.log('Tick');
-}, 10000);*/
-
-injector().inject(function (main, jQuery) {
-  main().catch(er => {
+injector().inject(function inj(main) { // eslint-disable-line prefer-arrow-callback
+  main().catch((er) => {
+    /* eslint-disable no-console */
     console.log(`Error unhandled: ${er}.`);
     console.log(er);
     process.exit(1);
+    /* eslint-enable no-console */
   });
 });

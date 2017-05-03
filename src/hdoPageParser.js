@@ -1,28 +1,29 @@
-module.exports = function(_, jQuery) {
-
+module.exports = function inj(_, jQuery) {
   async function parseData(data) {
     const $ = await jQuery();
-    let parsed = $(data);
+    const parsed = $(data);
 
-    let firstBar = $(parsed.find('.hdo-bar')[0]);
+    const firstBar = $(parsed.find('.hdo-bar')[0]);
 
-    let children = firstBar.children();
-    let spansNt = firstBar.find('span.hdont');
+    const children = firstBar.children();
+    const spansNt = firstBar.find('span.hdont');
 
-    let fromToTexts = spansNt.map((i, span) => {
-      let index = $(span).index();
-      let fromToText = $(children[index + 1]).attr('title').toString();
+    const fromToTexts = spansNt.map((i, span) => {
+      const index = $(span).index();
+      const fromToText = $(children[index + 1]).attr('title').toString();
       return fromToText;
     }).toArray();
 
-    let lowPlan = fromToTexts.map(fromTo => {
-      let match = fromTo.split(' - ');
-      return { from: match[0], to: match[1]  }
+    const lowPlan = fromToTexts.map((fromTo) => {
+      const match = fromTo.split(' - ');
+      return {
+        from: match[0],
+        to: match[1],
+      };
     });
 
     return { lowPlan };
   }
 
   return parseData;
-
-}
+};

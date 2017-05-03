@@ -1,0 +1,84 @@
+{
+  "extends": [
+    "eslint-config-airbnb",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+//    "security/detect-unsafe-regex": 1,
+//    "security/detect-non-literal-regexp": 1,
+//    "security/detect-non-literal-require": 1,
+//    "security/detect-non-literal-fs-filename": 1,
+//    "security/detect-eval-with-expression": 1,
+//    "security/detect-pseudoRandomBytes": 1,
+//    "security/detect-possible-timing-attacks": 1,
+//    "security/detect-no-csrf-before-method-override": 1,
+//    "security/detect-buffer-noassert": 1,
+//    "security/detect-child-process": 1,
+//    "security/detect-disable-mustache-escape": 1,
+//    "security/detect-object-injection": 1,
+//    "security/detect-new-buffer": 1,
+    "no-confusing-arrow": 0,
+    "max-len": [2, {"code": 200, "tabWidth": 2}],
+    "quote-props": [2, "consistent-as-needed"],
+    "require-yield": 0,
+    "no-mixed-operators": [2, {
+      "allowSamePrecedence": true
+    }],
+    "import/first": 0,
+    "import/prefer-default-export": 0,
+    "no-plusplus": 0,
+    "no-underscore-dangle": ["error", { "allowAfterThis":true } ],
+    "jsx-a11y/no-static-element-interactions": 0,
+    "import/default": 0,
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "ignore"
+    }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "code/client/**",
+          "**/*.spec.js",
+          "webpack/**",
+          "**/devRunner*",
+          "server.babel.js"
+        ]
+      }
+    ],
+    // TODO: fix
+    "react/no-find-dom-node": 1,
+    "react/forbid-prop-types": 0,
+    "react/require-default-props": 0,
+    "react/no-array-index-key": 0
+  },
+  "plugins": [
+    "react",
+    "import",
+    "security"
+  ],
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolve": {
+      "moduleDirectory": ["node_modules", "code"]
+    },
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack/webpack.config.babel.js"
+      }
+    }
+  },
+  "globals": {
+    "sinon": true
+  }
+}
