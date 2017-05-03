@@ -1,13 +1,17 @@
-module.exports = function inj(console, https, querystring, _, hdoPageParser) {
+module.exports = function inj(log, https, querystring, _, hdoPageParser) {
   class Client {
     constructor(clientData) {
       this._clientData = clientData;
+
+      if (!this._clientData.loginName || !this._clientData.password) {
+        throw new Error('credentials not provided');
+      }
     }
 
     async login() {
       const bodyData = querystring.stringify({
         login_name: this._clientData.loginName,
-        login_password: this._clientData.passsword,
+        login_password: this._clientData.password,
         login: '1',
         toDashboard: '1',
       });
@@ -53,7 +57,7 @@ module.exports = function inj(console, https, querystring, _, hdoPageParser) {
         }, options);
 
         const request = https.request(requestOptions, (response) => {
-          console.log(`${requestOptions.method} ${requestOptions.path} - ${response.statusCode}`);
+          log.info(`${requestOptions.method} ${requestOptions.path} - ${response.statusCode}`);
 
           if (response.statusCode !== (expectedResponse || 200)) {
             reject(new Error(`Unexpected response ${response.statusCode}.`));

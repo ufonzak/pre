@@ -5,19 +5,19 @@ describe('hdoPageParser', () => {
   let loaded;
 
   it('loads', done => {
-    injector().inject (function (hdoPageParser, fs, Q) {
-      loaded = { hdoPageParser, fs, Q };
+    injector().inject (function (hdoPageParser, fs, Promise) {
+      loaded = { hdoPageParser, fs, Promise };
 
-      expect(hdoPageParser).toBeDefined();
+      expect(loaded.hdoPageParser).toBeDefined();
       done();
     });
   });
 
 
   it('parses test data', async () => {
-    let { hdoPageParser, fs, Q } = loaded;
+    let { hdoPageParser, fs, Promise } = loaded;
 
-    let testData = await Q.nfcall(fs.readFile, './data/hdo_test_result.txt', 'utf-8');
+    let testData = await Promise.promisify(fs.readFile)('./data/hdo_test_result.txt', 'utf-8');
 
     let parsed = await hdoPageParser(testData);
 

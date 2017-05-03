@@ -18,7 +18,7 @@ describe('hdoPageParser', () => {
       preApi
     } = loaded;
 
-    let client = preApi.createClient({ loginName: 'martinzak73@gmail.com', passsword: 'qwerty' });
+    let client = preApi.createClient({ loginName: 'martinzak73@gmail.com', password: 'qwerty' });
 
     await client.login();
     let hdoData = await client.getTodaysHDO();

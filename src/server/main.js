@@ -1,12 +1,13 @@
 
-module.exports = function inj(console, server, Q) {
+module.exports = function inj(log, server, Promise) {
   return async () => {
-    const runPromise = Q.defer();
+    const runPromise = Promise.pending();
 
     process.on('SIGTERM', () => runPromise.resolve());
     process.on('SIGINT', () => runPromise.resolve());
+    process.on('exit', () => console.log('Exited'));
 
-    console.log('start');
+    log.info('start');
 
     await server.start();
 
@@ -14,6 +15,8 @@ module.exports = function inj(console, server, Q) {
 
     server.stop();
 
-    console.log('end');
+    log.info('end');
+
+    process.exit(0); //TODO: remove
   };
 };

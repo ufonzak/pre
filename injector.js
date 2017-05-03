@@ -30,9 +30,8 @@ module.exports = () => {
     https: require('https'),
     querystring: require('querystring'),
     fs: require('fs'),
-    Q: require('q'),
+    Promise: require('bluebird'),
     jQuery: getjQuery,
-    console,
     nodeProcess: process,
     bodyParser: require('body-parser'),
     compression: require('compression'),
@@ -40,6 +39,8 @@ module.exports = () => {
     http: require('http'),
     morgan: require('morgan'),
     cors: require('cors'),
+    mongodb: require('mongodb'),
+    winston: require('winston'),
   });
   /* eslint-enable global-require */
 
