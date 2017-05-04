@@ -2,13 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './src/client/index.html',
+  template: './index.html',
   filename: 'index.html',
   inject: 'body',
 });
 
 module.exports = {
-  entry: ['babel-polyfill', './src/client/index.jsx'],
+  entry: ['babel-polyfill', './index.jsx'],
+  context: path.join(__dirname, '../src/client'),
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
   },

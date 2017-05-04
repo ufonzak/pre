@@ -5,6 +5,7 @@
   ],
   "plugins": [
     "transform-async-to-generator",
-    "transform-export-extensions"
+    "transform-export-extensions",
+    "transform-object-rest-spread"
   ]
 }

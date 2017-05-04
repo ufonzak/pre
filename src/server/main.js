@@ -17,6 +17,6 @@ module.exports = function inj(log, server, Promise) {
 
     log.info('end');
 
-    process.exit(0); //TODO: remove
+    process.exit(0); // TODO: remove
   };
 };
