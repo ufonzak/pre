@@ -18,7 +18,7 @@ export default (state = initial, { type, data, loading, saving, error }) => { //
     case SETTING_SAVING:
       return { ...state, saving: true, error: null };
     case SETTING_SAVING_SUCCESS:
-      return { ...state, saving: false };
+      return { ...state, data, saving: false };
     case SETTING_ERROR:
       return { ...state, loading: false, saving: false, error };
     case SETTING_RESET:

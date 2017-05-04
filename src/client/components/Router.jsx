@@ -8,7 +8,7 @@ import {
 import store from '../store';
 import Hdo from './Hdo';
 import Home from './Home';
-import Settings from '../containers/Settings';
+import Settings from '../components/Settings';
 
 export default () => (
   <Provider store={store}>

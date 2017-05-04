@@ -1,5 +1,9 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, reduxForm, reset as resetForm } from 'redux-form';
+import { connect } from 'react-redux';
+
+import settingsActions from '../actions/settings';
+import { fetch, post } from '../tools/fetch';
 
 class Settings extends React.Component {
   componentDidMount() {
@@ -39,4 +43,41 @@ class Settings extends React.Component {
   }
 }
 
-export default Settings;
+
+const FORM_ID = 'settingsForm';
+
+const mapStateToProps = (globalState, ownProps) => ({ // eslint-disable-line no-unused-vars
+  initialValues: globalState.settings.data,
+  settings: globalState.settings,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchSettings: async () => {
+    try {
+      dispatch(settingsActions.load());
+      const settingsData = await fetch('/api/settings/pre');
+      dispatch(settingsActions.loaded(settingsData));
+    } catch (er) {
+      dispatch(settingsActions.error({ error: er.message }));
+    }
+  },
+  onSubmit: async (values) => {
+    try {
+      dispatch(settingsActions.save());
+      await post('/api/settings/pre', values);
+      dispatch(settingsActions.saved(values));
+    } catch (er) {
+      dispatch(settingsActions.error({ error: er.message }));
+    }
+  },
+  resetAll: () => {
+    dispatch(settingsActions.reset());
+    // dispatch(resetForm(FORM_ID));
+  },
+});
+
+const SettingsForm = reduxForm({
+  form: FORM_ID,
+})(Settings);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsForm);

@@ -13,8 +13,9 @@ const save = () => ({
   type: SETTING_SAVING,
 });
 
-const saved = () => ({
+const saved = data => ({
   type: SETTING_SAVING_SUCCESS,
+  data,
 });
 
 const error = errorData => ({
