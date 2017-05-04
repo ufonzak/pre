@@ -1,17 +1,29 @@
-import { SETTING_LOADING, SETTING_LOADING_SUCESS, SETTING_LOADING_ERROR } from '../reducers/constants';
+import { SETTING_LOADING, SETTING_LOADING_SUCCESS, SETTING_ERROR, SETTING_SAVING, SETTING_SAVING_SUCCESS, SETTING_RESET } from '../reducers/constants';
 
 const load = () => ({
   type: SETTING_LOADING,
 });
 
 const loaded = data => ({
-  type: SETTING_LOADING_SUCESS,
+  type: SETTING_LOADING_SUCCESS,
   data,
 });
 
+const save = () => ({
+  type: SETTING_SAVING,
+});
+
+const saved = () => ({
+  type: SETTING_SAVING_SUCCESS,
+});
+
 const error = errorData => ({
-  type: SETTING_LOADING_ERROR,
+  type: SETTING_ERROR,
   error: errorData,
 });
 
-export default { load, loaded, error };
+const reset = () => ({
+  type: SETTING_RESET,
+});
+
+export default { load, loaded, save, saved, error, reset };
