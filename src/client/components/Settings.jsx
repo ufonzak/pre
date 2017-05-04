@@ -11,7 +11,7 @@ class Settings extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.resetAll();
+
   }
 
   render() {
@@ -19,8 +19,7 @@ class Settings extends React.Component {
     const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
       <div>
-        <div>{loading ? 'Loading' : 'Done' }</div>
-        <button type="button" onClick={() => { this.props.resetAll(); this.props.fetchSettings(); }}>Load</button>
+        <div>{loading ? 'Loading' : 'Loaded...' }</div>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Login Name</label>
@@ -70,14 +69,11 @@ const mapDispatchToProps = dispatch => ({
       dispatch(settingsActions.error({ error: er.message }));
     }
   },
-  resetAll: () => {
-    dispatch(settingsActions.reset());
-    // dispatch(resetForm(FORM_ID));
-  },
 });
 
 const SettingsForm = reduxForm({
   form: FORM_ID,
+  enableReinitialize: true,
 })(Settings);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsForm);
