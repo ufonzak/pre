@@ -1,4 +1,4 @@
-const injector = require("../injector");
+const injector = require("../src/server/injector");
 
 describe('hdoPageParser', () => {
   let loaded;

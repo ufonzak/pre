@@ -1,5 +1,5 @@
 
-const injector = require('./injector');
+const injector = require('./server/injector');
 
 injector().inject(function inj(main) { // eslint-disable-line prefer-arrow-callback
   main().catch((er) => {

@@ -20,7 +20,7 @@ const saved = data => ({
 
 const error = errorData => ({
   type: SETTING_ERROR,
-  error: errorData,
+  error: errorData.error,
 });
 
 const reset = () => ({

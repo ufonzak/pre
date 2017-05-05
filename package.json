@@ -2,12 +2,11 @@
   "name": "pre",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/jest",
-    "start": "node_modules/.bin/babel-node index.js",
+    "start": "node_modules/.bin/babel-node src/server.js",
     "start:client": "webpack-dev-server --config webpacks/webpack.config.js",
-    "debug": "node_modules/.bin/babel-node-debug index.js",
+    "debug": "node_modules/.bin/babel-node-debug src/server.js",
     "lint": "eslint -c .eslintrc . --ext .js,.jsx",
     "lintfix": "npm run lint -- --fix"
   },
@@ -53,6 +52,7 @@
     "mongodb": "2.2.26",
     "morgan": "1.8.1",
     "path": "0.12.7",
+    "prop-types": "15.5.8",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-redux": "5.0.4",

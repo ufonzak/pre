@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm, reset as resetForm } from 'redux-form';
 import { connect } from 'react-redux';
 
@@ -16,21 +17,29 @@ class Settings extends React.Component {
 
   render() {
     const { loading, error } = this.props.settings;
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit, reset, submitting } = this.props;
+    let message = null;
+    if (error) {
+      message = `Error: ${error}.`;
+    } else if (loading) {
+      message = 'Loading...';
+    } else if (submitting) {
+      message = 'Submitting...';
+    }
     return (
       <div>
-        <div>{loading ? 'Loading' : 'Loaded...' }</div>
+        <div>{message}</div>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Login Name</label>
+            <label htmlFor="loginName">Login Name</label>
             <div>
-              <Field name="loginName" component="input" type="text" placeholder="Login Name" />
+              <Field id="loginName" name="loginName" component="input" type="text" placeholder="Login Name" />
             </div>
           </div>
           <div>
-            <label>Passwords</label>
+            <label htmlFor="password">Passwords</label>
             <div>
-              <Field name="password" component="input" type="password" placeholder="Password" />
+              <Field id="password" name="password" component="input" type="password" placeholder="Password" />
             </div>
           </div>
           <div>
@@ -42,6 +51,17 @@ class Settings extends React.Component {
   }
 }
 
+Settings.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  submitting: PropTypes.func.isRequired,
+  fetchSettings: PropTypes.func.isRequired,
+
+  settings: PropTypes.shape({
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 const FORM_ID = 'settingsForm';
 

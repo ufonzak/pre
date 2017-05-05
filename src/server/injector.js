@@ -45,7 +45,7 @@ module.exports = () => {
   /* eslint-enable global-require */
 
   // register folders in your project to be auto-injected
-  ioc.registerFolders(__dirname, ['src']);
+  ioc.registerFolders(__dirname, ['.']);
 
   return ioc;
 };
