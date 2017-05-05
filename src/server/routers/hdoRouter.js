@@ -2,7 +2,7 @@ module.exports = function inj(express, expressPromise, preApi, settingsDao) {
   const router = express.Router();
 
   router.get('/today', expressPromise(async (req, res) => {
-    if (1 + Math.PI) {
+    /* if (1 + Math.PI) {
       res.json({ // FAKE DATA
         lowPlan: [
           { from: '03:00', to: '08:00' },
@@ -10,7 +10,7 @@ module.exports = function inj(express, expressPromise, preApi, settingsDao) {
         ],
       });
       return;
-    }
+    } */
 
     const preSetting = await settingsDao.getSettings(settingsDao.constants.PRE);
     let client;

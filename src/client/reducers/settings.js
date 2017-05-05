@@ -1,11 +1,9 @@
-import {
-  SETTING_LOADING,
-  SETTING_LOADING_SUCCESS,
-  SETTING_ERROR,
-  SETTING_SAVING,
-  SETTING_SAVING_SUCCESS,
-  SETTING_RESET,
-} from './constants';
+export const SETTING_LOADING = 'SETTING_LOADING';
+export const SETTING_SAVING = 'SETTING_SAVING';
+export const SETTING_LOADING_SUCCESS = 'SETTING_LOADING_SUCCESS';
+export const SETTING_SAVING_SUCCESS = 'SETTING_SAVING_SUCCESS';
+export const SETTING_ERROR = 'SETTING_ERROR';
+export const SETTING_RESET = 'SETTING_RESET';
 
 const initial = { data: null, loading: false, saving: false, error: null };
 

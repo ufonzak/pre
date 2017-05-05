@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, reset as resetForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import settingsActions from '../actions/settings';
+import * as settingsActions from '../actions/settings';
+import settingsSelector from '../selectors/settings';
 import { fetch, post } from '../tools/fetch';
+
+const FORM_ID = 'settingsForm';
 
 class Settings extends React.Component {
   componentDidMount() {
     this.props.fetchSettings();
-  }
-
-  componentWillUnmount() {
-
   }
 
   render() {
@@ -54,21 +53,15 @@ class Settings extends React.Component {
 Settings.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  submitting: PropTypes.func.isRequired,
   fetchSettings: PropTypes.func.isRequired,
+
+  submitting: PropTypes.bool.isRequired,
 
   settings: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.string.isRequired,
+    error: PropTypes.string,
   }).isRequired,
 };
-
-const FORM_ID = 'settingsForm';
-
-const mapStateToProps = (globalState, ownProps) => ({ // eslint-disable-line no-unused-vars
-  initialValues: globalState.settings.data,
-  settings: globalState.settings,
-});
 
 const mapDispatchToProps = dispatch => ({
   fetchSettings: async () => {
@@ -77,7 +70,7 @@ const mapDispatchToProps = dispatch => ({
       const settingsData = await fetch('/api/settings/pre');
       dispatch(settingsActions.loaded(settingsData));
     } catch (er) {
-      dispatch(settingsActions.error({ error: er.message }));
+      dispatch(settingsActions.error(er.message));
     }
   },
   onSubmit: async (values) => {
@@ -86,7 +79,7 @@ const mapDispatchToProps = dispatch => ({
       await post('/api/settings/pre', values);
       dispatch(settingsActions.saved(values));
     } catch (er) {
-      dispatch(settingsActions.error({ error: er.message }));
+      dispatch(settingsActions.error(er.message));
     }
   },
 });
@@ -96,4 +89,4 @@ const SettingsForm = reduxForm({
   enableReinitialize: true,
 })(Settings);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsForm);
+export default connect(settingsSelector, mapDispatchToProps)(SettingsForm);
