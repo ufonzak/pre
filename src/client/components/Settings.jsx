@@ -15,7 +15,7 @@ class Settings extends React.Component {
   }
 
   render() {
-    const { loading, error } = this.props.settings;
+    const { loading, saved, error } = this.props.settings;
     const { handleSubmit, reset, submitting } = this.props;
     let message = null;
     if (error) {
@@ -23,7 +23,9 @@ class Settings extends React.Component {
     } else if (loading) {
       message = 'Loading...';
     } else if (submitting) {
-      message = 'Submitting...';
+      message = 'Saving...';
+    } else if (saved) {
+      message = 'Saved.';
     }
     return (
       <div>
@@ -59,6 +61,7 @@ Settings.propTypes = {
 
   settings: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
+    saved: PropTypes.bool.isRequired,
     error: PropTypes.string,
   }).isRequired,
 };
