@@ -14,7 +14,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
   },
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve('dist', 'client'),
     filename: 'index_bundle.js',
   },
   module: {
