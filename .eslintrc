@@ -70,7 +70,7 @@
   "settings": {
     "import/parser": "babel-eslint",
     "import/resolve": {
-      "moduleDirectory": ["node_modules", "code"]
+      "moduleDirectory": ["node_modules", "src"]
     },
     "import/resolver": {
       "webpack": {

@@ -3,5 +3,9 @@
     "es2015",
     "react"
   ],
-  "plugins": ["transform-async-to-generator", "transform-export-extensions"]
+  "plugins": [
+    "transform-async-to-generator",
+    "transform-export-extensions",
+    "transform-object-rest-spread"
+  ]
 }

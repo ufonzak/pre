@@ -1,8 +1,18 @@
 import React from 'react';
-import Greeting from './Greeting';
+import { Provider } from 'react-redux';
+
+import Router from './Router';
+import store from '../store';
 
 export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+  }
+
   render() {
-    return (<Greeting />);
+    return (
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    );
   }
 }
