@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetch } from '../tools/fetch';
-import hdoSelector from '../selectors/hdo';
+import { getHdo } from '../selectors/hdo';
 import * as hdoActions from '../actions/hdo';
 
 class Hdo extends React.Component {
@@ -46,16 +45,8 @@ Hdo.propTypes = {
   error: PropTypes.string,
 };
 
-const mapDispatchToProps = dispatch => ({
-  loadHdo: async () => {
-    try {
-      dispatch(hdoActions.load());
-      const hdoData = await fetch('/api/hdo/today');
-      dispatch(hdoActions.loaded(hdoData));
-    } catch (er) {
-      dispatch(hdoActions.error(er.message));
-    }
-  },
-});
+const mapDispatchToProps = {
+  loadHdo: () => hdoActions.load(),
+};
 
-export default connect(hdoSelector, mapDispatchToProps)(Hdo);
+export default connect(getHdo, mapDispatchToProps)(Hdo);

@@ -1,8 +1,20 @@
+function ApiError(message, meta) {
+  this.name = 'ApiError';
+  this.message = message;
+  this.stack = (new Error()).stack;
+  this.meta = meta;
+}
+ApiError.prototype = new Error; // eslint-disable-line new-parens
+
+const checkResponse = (response) => {
+  if (!response.ok) {
+    throw new ApiError(`Response not ok ${response.statusText}`, { code: response.status });
+  }
+};
+
 const myFetch = async (init, options = null) => {
   const response = await fetch(init, options);
-  if (!response.ok) {
-    throw new Error(`Response not ok ${response.statusText}`);
-  }
+  checkResponse(response);
   return response.json();
 };
 
@@ -14,10 +26,10 @@ const myPost = async (init, data) => {
       'Content-Type': 'application/json',
     }),
   });
-  if (!response.ok) {
-    throw new Error(`Response not ok ${response.statusText}`);
-  }
+  checkResponse(response);
   return response.text();
 };
 
-module.exports = { fetch: myFetch, post: myPost };
+module.exports = { fetch: myFetch, post: myPost, ApiError };
+
+

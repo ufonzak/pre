@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import * as settingsActions from '../actions/settings';
 import settingsSelector from '../selectors/settings';
-import { fetch, post } from '../tools/fetch';
 
 const FORM_ID = 'settingsForm';
 
@@ -66,26 +65,10 @@ Settings.propTypes = {
   }).isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchSettings: async () => {
-    try {
-      dispatch(settingsActions.load());
-      const settingsData = await fetch('/api/settings/pre');
-      dispatch(settingsActions.loaded(settingsData));
-    } catch (er) {
-      dispatch(settingsActions.error(er.message));
-    }
-  },
-  onSubmit: async (values) => {
-    try {
-      dispatch(settingsActions.save());
-      await post('/api/settings/pre', values);
-      dispatch(settingsActions.saved(values));
-    } catch (er) {
-      dispatch(settingsActions.error(er.message));
-    }
-  },
-});
+const mapDispatchToProps = {
+  fetchSettings: () => settingsActions.load(),
+  onSubmit: values => settingsActions.save(values),
+};
 
 const SettingsForm = reduxForm({
   form: FORM_ID,
