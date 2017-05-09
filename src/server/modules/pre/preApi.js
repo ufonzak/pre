@@ -60,7 +60,7 @@ module.exports = function inj(log, https, querystring, _, hdoPageParser) {
           log.info(`${requestOptions.method} ${requestOptions.path} - ${response.statusCode}`);
 
           if (response.statusCode !== (expectedResponse || 200)) {
-            reject(new Error(`Unexpected response ${response.statusCode}.`));
+            reject(new Error(`Unexpected response ${response.statusCode}. (${JSON.stringify(requestOptions)})`));
             return;
           }
 

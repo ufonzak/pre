@@ -16,8 +16,9 @@ export const loaded = data => ({
   data,
 });
 
-export const save = () => ({
+export const save = data => ({
   type: SETTING_SAVING,
+  data,
 });
 
 export const saved = data => ({
